@@ -1,0 +1,315 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Libre Franklin", sans-serif;
+}
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+:root {
+  --Blue: hsl(223, 87%, 63%);
+  --Blue--light: hsl(223, 87%, 75%);
+
+  --Pale-Blue: hsl(223, 100%, 88%);
+  --Light-Red: hsl(354, 100%, 66%);
+
+  --Gray: hsl(0, 0%, 59%);
+  --Very-Dark-Blue: hsl(209, 33%, 12%);
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding-block: 100px;
+}
+
+.logo {
+  width: 75px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 100;
+  margin-top: 25px;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+.description {
+  margin-bottom: 25px;
+}
+
+.input {
+  width: 85%;
+  border-radius: 100vw;
+  border: 1px solid var(--Gray);
+  padding: 10px 30px;
+  font-size: 14px;
+  outline: none;
+}
+
+.label {
+  display: none;
+  font-size: 14px;
+  color: var(--Light-Red);
+  text-align: start;
+  margin-top: -10px;
+  margin-left: -15px;
+  position: absolute;
+  bottom: -45%;
+  left: 4.5%;
+}
+
+.input:invalid {
+  border: 1px solid var(--Light-Red);
+}
+
+.input:invalid + .label {
+  display: block;
+}
+
+.input::placeholder {
+  color: var(--Gray);
+}
+
+.btn {
+  width: 85%;
+  background-color: var(--Blue);
+  color: white;
+  border: none;
+  border-radius: 100vw;
+  padding-block: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
+  transition: all .3s;
+}
+
+.btn:hover {
+  background-color: var(--Blue--light);
+}
+
+.form {
+  margin-bottom: 75px;
+  position: relative;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 25px;
+}
+
+.social {
+  display: inline-block;
+  width: 1.3em;
+  aspect-ratio: 1 / 1;
+  stroke-width: 0;
+  fill: var(--Blue);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .3s;
+}
+
+.social__div {
+  border: 1px solid var(--Pale-Blue);
+  border-radius: 100vw;
+  padding: 8px 12px;
+  width: 2.5em;
+  aspect-ratio: 1/ 1;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.social__div:hover {
+  background-color: var(--Blue);
+  border: 1px solid var(--Blue);
+}
+
+.social__div:hover .social  {
+  fill: white;
+}
+
+.footer {
+  color: var(--Gray);
+  font-size: 15px;
+}
+
+.desktop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 800px) {
+  .logo {
+    width: 87px;
+  }
+  .form {
+    display: grid;
+    grid-template-columns: 10fr 5fr;
+    align-items: center;
+    width: 49%;
+    gap: 1rem;
+    margin-top: 21px;
+    margin-bottom: 70px;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-top: 35px;
+    letter-spacing: .3px;
+    line-height: 1;
+  }
+
+  .description {
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .input , .btn{
+    width: 100%;
+  }
+
+  .input {
+    padding-block: 16px;
+    padding-inline: 29px;
+    width: 102%;
+  }
+
+  .input::placeholder {
+    font-size: 16px;
+  }
+  .btn {
+    width: 98%;
+    margin-left: auto;
+    padding-block: 15px;
+    margin-top: 0;
+    font-size: 17px;
+  }
+  .card {
+    padding-block: 87px ;
+  }
+
+  .illustration {
+    max-width: 640px;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .socials {
+    margin-top: 53px;
+    gap: 7px;
+    margin-bottom: 6px;
+  }
+
+  .social {
+    display: inline-block;
+    width: 1em;
+    aspect-ratio: 1 / 1;
+    stroke-width: 0;
+    fill: var(--Blue);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .social__div {
+    border: 1px solid var(--Pale-Blue);
+    border-radius: 100vw;
+    padding: 2px;
+    width: 2.3em;
+    aspect-ratio: 1/ 1;
+    position: relative;
+  }
+  .footer {
+    font-size: 12px;
+  
+  }
+}
+
+
+
+
+@media (min-width: 1500px) {
+  .form {
+    width: 40%;
+  }
+}
